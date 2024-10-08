@@ -36,3 +36,32 @@
     transform: rotate(360deg);
   }
 }
+
+/* src/App.css */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px;
+  border: 1px solid lightgray;
+}
+
+th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+thead {
+  position: sticky;
+  top: 0;
+}
+
+input {
+  padding: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}

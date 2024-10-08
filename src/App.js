@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+// src/App.js
+
+// src/App.js
 import './App.css';
 
-function App() {
+// src/App.js
+
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate, useNavigate } from 'react-router-dom';
+import PlayingTime from './pages/PlayingTime';
+import Authentication from './pages/Authentication';
+
+const App = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const npssoCode = localStorage.getItem('npsso_code');
+    
+    // Check if NPSSO code is already stored in localStorage and navigate accordingly
+    if (npssoCode) {
+      navigate('/playing-time');
+    } else {
+      navigate('/authenticate');
+    }
+  }, [navigate]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Routes>
+        <Route path="/authenticate" element={<Authentication />} />
+        <Route path="/playing-time" element={<PlayingTime />} />
+      </Routes>
   );
-}
+};
 
 export default App;
